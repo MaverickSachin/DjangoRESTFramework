@@ -1,11 +1,17 @@
 from typing import List
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView
+from rest_framework.viewsets import ModelViewSet
 
-from .models import Currency
-from .serializers import CurrencySerializer
+from .models import Currency, Category
+from .serializers import CurrencySerializer, CategorySerializer
 
 
 class CurrencyListAPIView(ListAPIView):
     queryset = Currency.objects.all()
     serializer_class = CurrencySerializer
+
+
+class CategoryViewset(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
